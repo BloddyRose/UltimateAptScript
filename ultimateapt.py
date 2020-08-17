@@ -1,8 +1,10 @@
 import os
 import time
-from .main import create_test
 from signal import signal, SIGINT
 from sys import exit
+import sys
+
+import create_test
 
 def handler(signal_received, frame):
     # Handle any cleanup here
