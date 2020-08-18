@@ -1,6 +1,6 @@
 # Ultimate Apt Script 
 
-## Use python3 
+## Uses python3 
 
 ### Installation 
 
