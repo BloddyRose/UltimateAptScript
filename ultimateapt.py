@@ -219,7 +219,7 @@ def satisfy():
     package = str(input("Enter package name: "))
     print("-" * 50)
     print("*" * 50)
-    print(f"\Satisfying {package} and creating file satisfy.txt to see results")
+    print(f"\tSatisfying {package} and creating file satisfy.txt to see results")
     print("*" * 50)
     print("-" * 50)
     try:
@@ -240,7 +240,7 @@ def remove():
     package = str(input("Enter package name: "))
     print("-" * 50)
     print("*" * 50)
-    print(f"\Removing {package} and creating file removed.txt to see results")
+    print(f"\tRemoving {package} and creating file removed.txt to see results")
     print("*" * 50)
     print("-" * 50)
     try:
