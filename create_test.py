@@ -1,4 +1,10 @@
 import os
+
+"""
+    This is function that create the files that are required by the ultimateapt to have
+    I have put the in another py file so the program will not be slow
+"""
+
 def create():
 
     if not os.path.exists('files'):
@@ -15,3 +21,23 @@ def create():
     file_show = open('files/show_info.txt', 'w')
     file_show.write('Test')
     file_show.close()
+
+    file_up = open('files/update.txt', 'w')
+    file_up.write('Test')
+    file_up.close()
+
+    file_upgr = open('files/upgrade.txt', 'w')
+    file_upgr.write('Test')
+    file_upgr.close()
+
+    file_s = open('files/satisfy.txt', 'w')
+    file_s.write('Test')
+    file_s.close()
+
+    file_r = open('files/removed.txt', 'w')
+    file_r.write('Test')
+    file_r.close()
+
+    file_ar = open('files/autoremove.txt', 'w')
+    file_ar.write('Test')
+    file_ar.close()
