@@ -17,3 +17,5 @@
     ** BloddyRose
 
     Awaiting colaborators
+
+    *** If want to colaborate email : bloddy.rose.404@gmail.com ***
