@@ -3,8 +3,28 @@ import time
 from signal import signal, SIGINT
 from sys import exit
 import sys
+import glob
 
-import create_test
+
+def del_files():
+    files = glob.glob('./files/*.txt')
+    for file in files:
+        print('+' * 20)
+        print(f"File removed : {file.strip('[]')}")
+        print('+' * 20)
+        os.remove(file)
+
+    text = input("Press Enter to go back !!!")
+
+    if text == "":
+        main()
+    else:
+        print("Only ENTER is accepted")
+
+
+def create():
+    if not os.path.exists('files'):
+        os.makedirs('files')
 
 
 def handler(signal_received, frame):
@@ -90,7 +110,7 @@ def show():
 
     try:
         cmd_to_screen = f'sudo apt-get show {pkg}'
-        cmd_to_file = f'sudo apt-get show {pkg} >> ./files/show_info.txt'
+        cmd_to_file = f'sudo apt-get show {pkg} >> files/show_info.txt'
         os.system(cmd_to_screen)
         print("Wrinting to file... ")
         os.system(cmd_to_file)
@@ -152,7 +172,8 @@ def read():
     print("6. Read satisfy.txt ")
     print("7. Read remove.txt ")
     print("8. Read autoremove.txt ")
-    print("9. Back ")
+    print("9. Remove all files ")
+    print("99. Back ")
     print("Select your choice! ")
 
     choice = int(input(">> "))
@@ -214,6 +235,14 @@ def read():
         if text == "":
             read()
     elif choice == 9:
+        # or raw_input in python2
+        text = input("Type \"yes\" to delete or \" no \" to not delete !")
+        if text == "yes":
+            del_files()
+        elif text == "no":
+            read()
+        main()
+    elif choice == 99:
         main()
     else:
         print("Numers 1,2,3,4,5,6,7,8,9 accept, Try again")
@@ -269,10 +298,10 @@ def upgrade():
             main()
         else:
             print("Only ENTER is accepted")
-    except SystemError:
+    except OSError:
         print("-" * 50)
         print("*" * 50)
-        print(SystemError)
+        print(OSError)
         print("*" * 50)
         print("-" * 50)
         text = input("Press Enter to go back !!!")
@@ -379,9 +408,9 @@ def autoremove():
 
 
 def main():
+    create()
     signal(SIGINT, handler)
     os.system('cat banner/banner.txt')
-    create_test.create()
     print("-" * 50)
     print("*" * 50)
     print("Hit CTRL + C to exit\n")
