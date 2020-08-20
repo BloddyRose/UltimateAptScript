@@ -5,7 +5,22 @@ from sys import exit
 import sys
 import glob
 
+"""
+Copyright 2020 BloddyRose
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+"""
+
+"""
+This script was made by BloddyRose 
+
+Info this script has 1 function main that run all them
+Main is located at the end
+"""
+# Del file function
 def del_files():
     try:
         files = glob.glob('./files/*.txt')
@@ -33,7 +48,7 @@ def del_files():
             print("Only ENTER is accepted")
         
 
-
+# create folder files
 def create():
     try: 
         if not os.path.exists('files'):
@@ -47,7 +62,7 @@ def create():
             main()
         else:
             print("Only ENTER is accepted")
-
+# Lisenter for CTRL + C
 def handler(signal_received, frame):
     # Handle any cleanup here
     print("-" * 100)
@@ -57,7 +72,7 @@ def handler(signal_received, frame):
     print("-" * 100)
     exit(0)
 
-
+# Install with apt
 def install():
     signal(SIGINT, handler)
     print("Enter package name!")
@@ -88,7 +103,7 @@ def install():
         else:
             print("Only ENTER is accepted")
 
-
+# Search for packages
 def search():
     signal(SIGINT, handler)
     print("Enter package name!")
@@ -120,7 +135,7 @@ def search():
         else:
             print("Only ENTER is accepted")
 
-
+# Show informations about package
 def show():
     signal(SIGINT, handler)
     print("Enter package name!")
@@ -153,7 +168,7 @@ def show():
         else:
             print("Only ENTER is accepted")
 
-
+# List all installed packages
 def list_pkg():
     signal(SIGINT, handler)
     print("Listing all installed packages...")
@@ -182,7 +197,7 @@ def list_pkg():
         else:
             print("Only ENTER is accepted")
 
-
+# Read file from program
 def read():
     signal(SIGINT, handler)
     print("1. Installed Packages file (all_packages.txt)")
@@ -269,7 +284,7 @@ def read():
         print("Numers 1,2,3,4,5,6,7,8,9 accept, Try again")
         read()
 
-
+# Update apt function
 def update():
     signal(SIGINT, handler)
     print("-" * 50)
@@ -300,7 +315,7 @@ def update():
         else:
             print("Only ENTER is accepted")
 
-
+# Def upgrade
 def upgrade():
     signal(SIGINT, handler)
     print("-" * 50)
@@ -346,6 +361,7 @@ def upgrade():
             main()
         else:
             print("Only ENTER is accepted")
+# Satisfy package 
 def satisfy():  
     signal(SIGINT, handler)
     package = str(input("Enter package name: "))
@@ -378,7 +394,7 @@ def satisfy():
         else:
             print("Only ENTER is accepted")
 
-
+# Remove packages
 def remove():
     signal(SIGINT, handler)
     package = str(input("Enter package name: "))
@@ -410,7 +426,7 @@ def remove():
         else:
             print("Only ENTER is accepted")
 
-
+# Autoremove packages
 def autoremove():
     signal(SIGINT, handler)
     print("-" * 50)
@@ -441,7 +457,7 @@ def autoremove():
         else:
             print("Only ENTER is accepted")
 
-
+# Main Functions
 def main():
     create()
     signal(SIGINT, handler)
@@ -495,6 +511,4 @@ def main():
     else:
         print("Don\'t know that command!")
         main()
-
-
 main()
