@@ -6,6 +6,7 @@ import sys
 
 import create_test
 
+
 def handler(signal_received, frame):
     # Handle any cleanup here
     print("-" * 100)
@@ -24,19 +25,28 @@ def install():
     print(f"Installing package {package}")
     print('=' * 100)
     try:
-        cmd_to_screen = f'sudo apt-get install {package}' 
-        cmd_to_file = f'sudo apt-get install {package} >> ./files/install_info.txt' 
+        cmd_to_screen = f'sudo apt-get install {package}'
+        cmd_to_file = f'sudo apt-get install {package} >> ./files/install_info.txt'
         os.system(cmd_to_screen)
         print("Wrinting to file... ")
         os.system(cmd_to_file)
         print("Done")
-        time.sleep(2)
-        os.system('clear')
-        main()
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+
     except OSError as identifier:
+        print("=" * 100)
         print('Error code : ' + identifier)
-        time.sleep(2)
-        main()
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+
 
 def search():
     signal(SIGINT, handler)
@@ -51,13 +61,24 @@ def search():
         cmd_to_file = f'sudo apt-get search {pkg} >> ./files/search.txt'
         os.system(cmd_to_screen)
         os.system(cmd_to_file)
+        print("=" * 100)
         print("Done")
-        time.sleep(2)
-        os.system('clear')
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
     except OSError as err:
+        print("=" * 100)
         print("Erorr : " + err)
-        time.sleep(2)
-        main()
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+
 
 def show():
     signal(SIGINT, handler)
@@ -68,38 +89,58 @@ def show():
     print('=' * 100)
 
     try:
-        cmd_to_screen = f'sudo apt-get show {pkg}' 
-        cmd_to_file = f'sudo apt-get show {pkg} >> ./files/show_info.txt' 
+        cmd_to_screen = f'sudo apt-get show {pkg}'
+        cmd_to_file = f'sudo apt-get show {pkg} >> ./files/show_info.txt'
         os.system(cmd_to_screen)
         print("Wrinting to file... ")
         os.system(cmd_to_file)
+        print("=" * 100)
         print("Done")
-        time.sleep(2)
-        os.system('clear')
-        main()
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
     except OSError as err:
+        print("=" * 100)
         print("Erorr : " + err)
-        time.sleep(2)
-        main()
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+
 
 def list_pkg():
     signal(SIGINT, handler)
     print("Listing all installed packages...")
     os.system('clear')
     try:
-        cmd_to_screen = f'sudo apt list --installed' 
-        cmd_to_file = f'sudo apt list --installed >> ./files/all_packages.txt' 
+        cmd_to_screen = f'sudo apt list --installed'
+        cmd_to_file = f'sudo apt list --installed >> ./files/all_packages.txt'
         os.system(cmd_to_screen)
         print("Wrinting to file... ")
         os.system(cmd_to_file)
+        print("=" * 100)
         print("Done")
-        time.sleep(2)
-        os.system('clear')
-        main()
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
     except OSError as err:
+        print("=" * 100)
         print("Erorr : " + err)
-        time.sleep(2)
-        main()
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+
 
 def read():
     signal(SIGINT, handler)
@@ -111,7 +152,7 @@ def read():
     print("6. Read satisfy.txt ")
     print("7. Read remove.txt ")
     print("8. Read autoremove.txt ")
-    print("9. Back ") 
+    print("9. Back ")
     print("Select your choice! ")
 
     choice = int(input(">> "))
@@ -177,7 +218,8 @@ def read():
     else:
         print("Numers 1,2,3,4,5,6,7,8,9 accept, Try again")
         read()
-        
+
+
 def update():
     signal(SIGINT, handler)
     print("-" * 50)
@@ -188,15 +230,27 @@ def update():
     try:
         os.system("sudo apt-get update >> ./files/update.txt")
         os.system("sudo apt-get update")
-        time.sleep(2)
-        main()
+        print("=" * 100)
+        print("\tDone")
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
     except OSError:
         print("-" * 50)
         print("*" * 50)
         print(OSError)
         print("*" * 50)
         print("-" * 50)
-        main()
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+
+
 def upgrade():
     signal(SIGINT, handler)
     print("-" * 50)
@@ -207,36 +261,60 @@ def upgrade():
     try:
         os.system("sudo apt-get update >> ./files/upgrade.txt")
         os.system("sudo apt-get update")
-        time.sleep(2)
-        main()
+        print("=" * 100)
+        print("\tDone")
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
     except SystemError:
         print("-" * 50)
         print("*" * 50)
         print(SystemError)
         print("*" * 50)
         print("-" * 50)
-        main()
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+
+
 def satisfy():
     signal(SIGINT, handler)
     package = str(input("Enter package name: "))
     print("-" * 50)
     print("*" * 50)
-    print(f"\tSatisfying {package} and creating file satisfy.txt to see results")
+    print(
+        f"\tSatisfying {package} and creating file satisfy.txt to see results")
     print("*" * 50)
     print("-" * 50)
     try:
         os.system(f"sudo apt-get satisfy {package} >> ./files/statisfy.txt")
         os.system(f"sudo apt-get satisfy {package}")
-        time.sleep(2)
-        main()
+        print("=" * 100)
+        print("\tDone")
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
     except SystemError:
         print("-" * 50)
         print("*" * 50)
         print(SystemError)
         print("*" * 50)
         print("-" * 50)
-        main()
-    
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+
+
 def remove():
     signal(SIGINT, handler)
     package = str(input("Enter package name: "))
@@ -248,15 +326,26 @@ def remove():
     try:
         os.system(f"sudo apt-get remove {package} >> ./files/removed.txt")
         os.system(f"sudo apt-get remove {package}")
-        time.sleep(2)
-        main()
+        print("=" * 100)
+        print("\tDone")
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
     except SystemError:
         print("-" * 50)
         print("*" * 50)
         print(SystemError)
         print("*" * 50)
         print("-" * 50)
-        main()
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+
 
 def autoremove():
     signal(SIGINT, handler)
@@ -268,15 +357,27 @@ def autoremove():
     try:
         os.system("sudo apt-get autoremove >> ./files/autoremove.txt")
         os.system("sudo apt-get autoremove")
-        time.sleep(2)
-        main()
+        print("=" * 100)
+        print("\tDone")
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
     except SystemError:
         print("-" * 50)
         print("*" * 50)
         print(SystemError)
         print("*" * 50)
         print("-" * 50)
-        main()
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+
+
 def main():
     signal(SIGINT, handler)
     os.system('cat ../banner/banner.txt')
@@ -301,7 +402,7 @@ def main():
     print("10. Autoremove packages ")
     print("*" * 50)
     print("-" * 50)
-    print("Enter your package name!\n")
+    print("Select your choice !!!\n")
 
     print("\n\a")
     signal(SIGINT, handler)
@@ -330,4 +431,6 @@ def main():
     else:
         print("Don\'t know that command!")
         main()
+
+
 main()
