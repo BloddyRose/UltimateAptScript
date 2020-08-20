@@ -25,7 +25,7 @@ def install():
     print('=' * 100)
     try:
         cmd_to_screen = f'sudo apt-get install {package}' 
-        cmd_to_file = f'sudo apt-get install {package} >> files/install_info.txt' 
+        cmd_to_file = f'sudo apt-get install {package} >> ./files/install_info.txt' 
         os.system(cmd_to_screen)
         print("Wrinting to file... ")
         os.system(cmd_to_file)
@@ -48,7 +48,9 @@ def search():
 
     try:
         cmd_to_screen = f'sudo apt-get search {pkg}'
+        cmd_to_file = f'sudo apt-get search {pkg} >> ./files/search.txt'
         os.system(cmd_to_screen)
+        os.system(cmd_to_file)
         print("Done")
         time.sleep(2)
         os.system('clear')
@@ -67,7 +69,7 @@ def show():
 
     try:
         cmd_to_screen = f'sudo apt-get show {pkg}' 
-        cmd_to_file = f'sudo apt-get show {pkg} >> /files/show_info.txt' 
+        cmd_to_file = f'sudo apt-get show {pkg} >> ./files/show_info.txt' 
         os.system(cmd_to_screen)
         print("Wrinting to file... ")
         os.system(cmd_to_file)
@@ -86,7 +88,7 @@ def list_pkg():
     os.system('clear')
     try:
         cmd_to_screen = f'sudo apt list --installed' 
-        cmd_to_file = f'sudo apt list --installed >> files/all_packages.txt' 
+        cmd_to_file = f'sudo apt list --installed >> ./files/all_packages.txt' 
         os.system(cmd_to_screen)
         print("Wrinting to file... ")
         os.system(cmd_to_file)
@@ -184,7 +186,7 @@ def update():
     print("*" * 50)
     print("-" * 50)
     try:
-        os.system("sudo apt-get update >> /files/update.txt")
+        os.system("sudo apt-get update >> ./files/update.txt")
         os.system("sudo apt-get update")
         time.sleep(2)
         main()
@@ -203,7 +205,7 @@ def upgrade():
     print("*" * 50)
     print("-" * 50)
     try:
-        os.system("sudo apt-get update >> /files/upgrade.txt")
+        os.system("sudo apt-get update >> ./files/upgrade.txt")
         os.system("sudo apt-get update")
         time.sleep(2)
         main()
@@ -223,7 +225,7 @@ def satisfy():
     print("*" * 50)
     print("-" * 50)
     try:
-        os.system(f"sudo apt-get satisfy {package} >> /files/statisfy.txt")
+        os.system(f"sudo apt-get satisfy {package} >> ./files/statisfy.txt")
         os.system(f"sudo apt-get satisfy {package}")
         time.sleep(2)
         main()
@@ -244,7 +246,7 @@ def remove():
     print("*" * 50)
     print("-" * 50)
     try:
-        os.system(f"sudo apt-get remove {package} >> /files/removed.txt")
+        os.system(f"sudo apt-get remove {package} >> ./files/removed.txt")
         os.system(f"sudo apt-get remove {package}")
         time.sleep(2)
         main()
@@ -264,7 +266,7 @@ def autoremove():
     print("*" * 50)
     print("-" * 50)
     try:
-        os.system("sudo apt-get autoremove >> /files/autoremove.txt")
+        os.system("sudo apt-get autoremove >> ./files/autoremove.txt")
         os.system("sudo apt-get autoremove")
         time.sleep(2)
         main()

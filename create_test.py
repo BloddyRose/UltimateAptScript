@@ -41,3 +41,7 @@ def create():
     file_ar = open('files/autoremove.txt', 'w')
     file_ar.write('Test')
     file_ar.close()
+
+    file_sr = open('files/search.txt', 'w')
+    file_sr.write('Test')
+    file_sr.close()
