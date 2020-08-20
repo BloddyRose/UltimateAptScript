@@ -1,9 +1,9 @@
 # Ultimate Apt Script 
 
-## Uses python3 
-
 ### Installation 
-
+    ** chmod +x run.sh
+    ** ./run.sh
+    ** Run run.sh (recommended) if is an error then try commands  
     ** sudo pip3 install -r requirements.txt 
     ** python3 ultimateapt.py (SUDO ask when needed)
 
@@ -12,6 +12,7 @@
     ** Save output to files 
     ** Easy work with apt 
     ** No more sudo apt-get install 
+
 
 ### Creator
     ** BloddyRose
