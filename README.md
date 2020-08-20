@@ -4,6 +4,7 @@
     ** chmod +x run.sh
     ** ./run.sh
     ** Run run.sh (recommended) if is an error then try commands  
+    ** OR
     ** sudo pip3 install -r requirements.txt 
     ** python3 ultimateapt.py (SUDO ask when needed)
 
