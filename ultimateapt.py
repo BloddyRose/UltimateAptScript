@@ -7,25 +7,45 @@ import glob
 
 
 def del_files():
-    files = glob.glob('./files/*.txt')
-    for file in files:
-        print('+' * 20)
-        print(f"File removed : {file.strip('[]')}")
-        print('+' * 20)
-        os.remove(file)
+    try:
+        files = glob.glob('./files/*.txt')
+        for file in files:
+            print('+' * 20)
+            print(f"File removed : {file.strip('[]')}")
+            print('+' * 20)
+            os.remove(file)
 
-    text = input("Press Enter to go back !!!")
+        text = input("Press Enter to go back !!!")
 
-    if text == "":
-        main()
-    else:
-        print("Only ENTER is accepted")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+    except OSError:
+        print("=" * 100)
+        print('Error code : ' + OSError)
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
+        
 
 
 def create():
-    if not os.path.exists('files'):
-        os.makedirs('files')
-
+    try: 
+        if not os.path.exists('files'):
+            os.makedirs('files')
+    except:
+        print("=" * 100)
+        print('Error code : ' + OSError)
+        print("=" * 100)
+        text = input("Press Enter to go back !!!")
+        if text == "":
+            main()
+        else:
+            print("Only ENTER is accepted")
 
 def handler(signal_received, frame):
     # Handle any cleanup here
