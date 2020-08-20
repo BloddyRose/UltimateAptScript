@@ -6,6 +6,13 @@
     ** Run run.sh (recommended) if is an error then try commands  
     ** python3 ultimateapt.py (SUDO ask when needed)
 
+ ____  _           _     _       ____                
+| __ )| | ___   __| | __| |_   _|  _ \ ___  ___  ___ 
+|  _ \| |/ _ \ / _` |/ _` | | | | |_) / _ \/ __|/ _ \
+| |_) | | (_) | (_| | (_| | |_| |  _ < (_) \__ \  __/
+|____/|_|\___/ \__,_|\__,_|\__, |_| \_\___/|___/\___|
+                           |___/                     
+
 
 ### Features 
     ** Save output to files 
