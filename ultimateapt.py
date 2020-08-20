@@ -15,6 +15,7 @@ def del_files():
             print('+' * 20)
             os.remove(file)
 
+
         text = input("Press Enter to go back !!!")
 
         if text == "":
@@ -307,31 +308,45 @@ def upgrade():
     print("\tUprading Packages and creating file upgrade.txt to see results")
     print("*" * 50)
     print("-" * 50)
-    try:
-        os.system("sudo apt-get update >> ./files/upgrade.txt")
-        os.system("sudo apt-get update")
-        print("=" * 100)
-        print("\tDone")
-        print("=" * 100)
+    print("Print do you really want to upgrade this will take long time!")
+    print("Enter y for yes or n for no")
+    answer = input(">> ")
+    if answer == 'y':
+        try:
+            os.system("sudo apt-get upgrade -y >> ./files/upgrade.txt")
+            os.system("sudo apt-get upgrade -y ")
+            print("=" * 100)
+            print("\tDone")
+            print("=" * 100)
+            text = input("Press Enter to go back !!!")
+            if text == "":
+                main()
+            else:
+                print("Only ENTER is accepted")
+        except OSError:
+            print("-" * 50)
+            print("*" * 50)
+            print(OSError)
+            print("*" * 50)
+            print("-" * 50)
+            text = input("Press Enter to go back !!!")
+            if text == "":
+                main()
+            else:
+                print("Only ENTER is accepted")
+    
+    elif answer == 'n':
+        print("-" * 50)
+        print("*" * 50)
+        print("\tGoing back to main menu wait!!")
+        print("*" * 50)
+        print("-" * 50)
         text = input("Press Enter to go back !!!")
         if text == "":
             main()
         else:
             print("Only ENTER is accepted")
-    except OSError:
-        print("-" * 50)
-        print("*" * 50)
-        print(OSError)
-        print("*" * 50)
-        print("-" * 50)
-        text = input("Press Enter to go back !!!")
-        if text == "":
-            main()
-        else:
-            print("Only ENTER is accepted")
-
-
-def satisfy():
+def satisfy():  
     signal(SIGINT, handler)
     package = str(input("Enter package name: "))
     print("-" * 50)
