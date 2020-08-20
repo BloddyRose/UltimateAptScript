@@ -10,7 +10,7 @@ def handler(signal_received, frame):
     # Handle any cleanup here
     print("-" * 100)
     print("*" * 100)
-    print('\t    SIGINT or CTRL-C detected. Exiting gracefully')
+    print('\tCTRL-C detected. Exiting gracefully')
     print("*" * 100)
     print("-" * 100)
     exit(0)
