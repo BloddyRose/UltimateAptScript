@@ -380,7 +380,7 @@ def autoremove():
 
 def main():
     signal(SIGINT, handler)
-    os.system('cat ../banner/banner.txt')
+    os.system('cat banner/banner.txt')
     create_test.create()
     print("-" * 50)
     print("*" * 50)
