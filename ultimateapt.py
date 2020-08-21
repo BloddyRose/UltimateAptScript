@@ -29,23 +29,35 @@ This script was made by BloddyRose
 Info this script has 1 function main that run all them
 Main is located at the end
 """
+def exit_func():
+    print("Goodbye User (Script Kiddie)")
+    exit()
+    sys.exit()
+
 # Del file function
 def del_files():
     try:
         files = glob.glob('./files/*.txt')
         for file in files:
             print('+' * 20)
-            print(f"File removed : {file.strip('[]')}")
+            print(f"Found file : {file.strip('[]')}")
             print('+' * 20)
-            os.remove(file)
+        print("Enter y for delete!! (nothing for no!!)")
+        del_answer = str(input(">> "))
+        if del_answer == 'y':
+            for file in files:
+                print("*" * 20)
+                print(f"File deleted {file.strip('[]')}")
+                os.remove(file)
+                print("*" * 20)
+        elif del_answer == "":
+            print("Not deleting Going Back")
+            text = input("Press Enter to go back !!!")
 
-
-        text = input("Press Enter to go back !!!")
-
-        if text == "":
-            main()
-        else:
-            print("Only ENTER is accepted")
+            if text == "":
+                main()
+            else:
+                print("Only ENTER is accepted")
     except OSError:
         print("=" * 100)
         print('Error code : ' + OSError)
@@ -281,7 +293,7 @@ def read():
             read()
     elif choice == 9:
         # or raw_input in python2
-        text = input("Type \"yes\" to delete or \" no \" to not delete !")
+        text = input("Type \"yes\" to delete or \" no \" to not delete !: ")
         if text == "yes":
             del_files()
         elif text == "no":
@@ -490,33 +502,36 @@ def main():
     print("9. Remove package ")
     print("10. Autoremove packages ")
     print("*" * 50)
+    print("99. Exit")
     print("-" * 50)
     print("Select your choice !!!\n")
 
     print("\n\a")
     signal(SIGINT, handler)
-    user_response = int(input(">> "))
+    user_response = input(">> ")
 
-    if user_response == 1:
+    if int(user_response) == 1:
         search()
-    elif user_response == 2:
+    elif int(user_response) == 2:
         install()
-    elif user_response == 3:
+    elif int(user_response) == 3:
         show()
-    elif user_response == 4:
+    elif int(user_response) == 4:
         list_pkg()
-    elif user_response == 5:
+    elif int(user_response) == 5:
         read()
-    elif user_response == 6:
+    elif int(user_response) == 6:
         update()
-    elif user_response == 7:
+    elif int(user_response) == 7:
         upgrade()
-    elif user_response == 8:
+    elif int(user_response) == 8:
         satisfy()
-    elif user_response == 9:
+    elif int(user_response) == 9:
         remove()
-    elif user_response == 10:
+    elif int(user_response) == 10:
         autoremove()
+    elif int(user_response) == 99:
+        exit_func()
     else:
         print("Don\'t know that command!")
         main()
